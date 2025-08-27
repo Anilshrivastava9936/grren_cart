@@ -121,7 +121,7 @@ export const stripeWebhooks = async (req, res) => {
             process.env.STRIPE_WEBHOOK_SECRET
         );
     } catch (error) {
-        response.status(400).send(`webHook Error: ${error.messahe}`)
+        response.status(400).send(`webHook Error: ${error.message}`)
     }
     //handle the event
     switch (event.type) {
