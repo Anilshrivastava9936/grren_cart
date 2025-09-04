@@ -21,19 +21,32 @@ export const AppContextProvider = ({ children }) => {
     const [searchQuery, setSearchQuery] = useState({})
 
     //fetch seller status
-    const fetchSeller = async () => {
-        try {
-            const { data } = await axios.post('api/seller/login', { email, password }, { withCredentials: true })
-            if (data.success) {
-                setIsSeller(true)
-            } else {
+    // const fetchSeller = async () => {
+    //     try {
+    //         const { data } = await axios.post('api/seller/login', { email, password }, { withCredentials: true })
+    //         if (data.success) {
+    //             setIsSeller(true)
+    //         } else {
 
-                setIsSeller(false)
-            }
-        } catch (error) {
-            setIsSeller(false)
-        }
+    //             setIsSeller(false)
+    //         }
+    //     } catch (error) {
+    //         setIsSeller(false)
+    //     }
+    // }
+
+    const fetchSeller = async () => {
+  try {
+    const { data } = await axios.get('/api/seller/is-auth'); // ✅ use GET, not POST
+    if (data.success) {
+      setIsSeller(true);
+    } else {
+      setIsSeller(false);
     }
+  } catch (error) {
+    setIsSeller(false);
+  }
+};
 
     //fetch user auth status,user data and cart items
     const fetchUser = async () => {
