@@ -27,7 +27,7 @@ export const sellerLogin=async(req,res)=>{
 export const isSellerAuth = async (req, res) => {
     try {
        
-        return res.json({ success: true })
+        return res.json({ success: true, email: process.env.SELLER_EMAIL })
 
     } catch (error) {
         console.log(error)
