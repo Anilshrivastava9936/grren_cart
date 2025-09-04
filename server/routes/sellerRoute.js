@@ -5,7 +5,10 @@ import authSeller from '../middleware/authSeller.js';
 const sellerRouter=express.Router();
 
 sellerRouter.post('/login',sellerLogin)
-sellerRouter.get('/is-auth',authSeller,isSellerAuth)
+// sellerRouter.get('/is-auth',authSeller,isSellerAuth)
+sellerRouter.get('/is-auth',authSeller, (req, res) => {
+    res.json({ success: true, message: "Seller is authenticated" });
+})
 sellerRouter.get('/logout',sellerLogout)
 
 export default sellerRouter;
