@@ -16,6 +16,10 @@ export const sellerLogin=async(req,res)=>{
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict'
         });
+       console.log("Seller login successful, cookie set:", {
+  token,
+  env: process.env.NODE_ENV
+});
      return res.json({ success: true, message: "LOgged in" })
     }else{
          res.json({ success: false, message: "invalid detailes" })
