@@ -7,7 +7,9 @@ export const sellerLogin=async(req,res)=>{
    try {
      const {email,password}=req.body;
     if(password === process.env.SELLER_PASSWORD && email === process.env.SELLER_EMAIL){
+       console.log("user login")
         const token=jwt.sign({email},process.env.JWT_SECRET,{expiresIn:'7d'});
+       console.log("user login token",token)
 
         res.cookie('sellerToken',token, {
             httpOnly: true,
