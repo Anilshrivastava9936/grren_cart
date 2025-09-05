@@ -13,8 +13,11 @@ export const sellerLogin=async(req,res)=>{
 
         res.cookie('sellerToken',token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict'
+            // secure: process.env.NODE_ENV === 'production',
+            // sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict'
+             secure: true,              // ✅ must be true in production
+  sameSite: "none",          // ✅ required for cross-site
+
         });
        console.log("Seller login successful, cookie set:", {
   token,
